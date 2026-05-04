@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExamIQ — Free AP Practice Exams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0d1b2a; --gold:#c9a84c; --cream:#f8f4ee; --text:#1a1a2e; --white:#ffffff; }
+    body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--text); }
+    nav { background:var(--navy); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.6rem; font-weight:700; text-decoration:none; }
+    .logo span { color:var(--white); }
+    .hero { text-align:center; padding:5rem 2rem 4rem; background:linear-gradient(135deg, var(--navy), #1a2f4a); color:var(--white); }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:3rem; margin-bottom:1rem; }
+    .hero p { font-size:1.2rem; opacity:0.9; max-width:600px; margin:0 auto; }
+    .container { max-width:1200px; margin:0 auto; padding:4rem 2rem; }
+    .section-title { font-family:'Playfair Display',serif; font-size:2rem; color:var(--navy); text-align:center; margin-bottom:0.5rem; }
+    .section-subtitle { text-align:center; color:#6b7280; font-size:1rem; margin-bottom:3rem; }
+    .exams-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:2rem; }
+    .exam-card { background:var(--white); border-radius:12px; padding:2rem; border:1px solid #e5e7eb; transition:all 0.2s; }
+    .exam-card:hover { transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.1); border-color:var(--gold); }
+    .exam-badge { display:inline-block; background:var(--gold); color:var(--navy); padding:0.35rem 0.85rem; border-radius:100px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1rem; }
+    .exam-card h3 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin-bottom:0.75rem; }
+    .exam-card p { color:#6b7280; line-height:1.6; margin-bottom:1.5rem; font-size:0.95rem; }
+    .exam-features { list-style:none; margin-bottom:1.5rem; }
+    .exam-features li { padding:0.4rem 0; color:#6b7280; font-size:0.9rem; }
+    .exam-features li::before { content:'✦'; color:var(--gold); margin-right:0.5rem; font-weight:700; }
+    .btn { display:inline-block; background:var(--gold); color:var(--navy); padding:0.85rem 2rem; border-radius:8px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.2s; }
+    .btn:hover { background:#e2c278; }
+    .btn-outline { background:transparent; border:2px solid var(--navy); color:var(--navy); }
+    .btn-outline:hover { background:var(--navy); color:var(--white); }
+    .coming-soon { background:#f9fafb; border:2px dashed #d1d5db; opacity:0.6; }
+    .coming-soon .btn { opacity:0.5; cursor:not-allowed; }
+    .cta-section { background:linear-gradient(135deg, var(--navy), #1a2f4a); color:var(--white); border-radius:16px; padding:3rem; text-align:center; margin-top:4rem; }
+    .cta-section h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:1rem; }
+    .cta-section p { font-size:1.1rem; opacity:0.9; margin-bottom:2rem; }
+    .cta-section input { padding:0.85rem 1.25rem; border-radius:8px; border:2px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:var(--white); font-size:1rem; margin-right:0.75rem; min-width:280px; }
+    .cta-section input::placeholder { color:rgba(255,255,255,0.6); }
+    .cta-section input:focus { outline:none; border-color:var(--gold); background:rgba(255,255,255,0.15); }
+    footer { text-align:center; padding:2rem; color:#6b7280; font-size:0.85rem; }
+    footer a { color:var(--gold); text-decoration:none; }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6SHQTG1VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z6SHQTG1VJ');
+  </script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Exam<span>IQ</span></a>
+</nav>
+
+<div class="hero">
+  <h1>Ace Your AP Exams</h1>
+  <p>Free practice exams with detailed answer keys. Study smart, score high.</p>
+</div>
+
+<div class="container">
+  <h2 class="section-title">Available Practice Exams</h2>
+  <p class="section-subtitle">Take the exam for free. Unlock detailed answers for $6.99.</p>
+
+  <div class="exams-grid">
+    
+    <!-- AP English Lit -->
+    <div class="exam-card">
+      <span class="exam-badge">Available Now</span>
+      <h3>AP English Literature</h3>
+      <p>26 multiple-choice questions covering poetry analysis (Donne) and prose fiction (Austen). Full Section I simulation with 60-minute timer.</p>
+      <ul class="exam-features">
+        <li>2 literary passages (poetry + prose)</li>
+        <li>26 AP-style multiple choice questions</li>
+        <li>Instant scoring & performance breakdown</li>
+        <li>Detailed explanations ($6.99 unlock)</li>
+      </ul>
+      <a href="/ap-english-lit.html" class="btn">Start Free Exam</a>
+    </div>
+
+    <!-- AP Spanish Lit -->
+    <div class="exam-card">
+      <span class="exam-badge">Available Now</span>
+      <h3>AP Spanish Literature</h3>
+      <p>22 multiple-choice questions covering García Lorca and García Márquez. Plus free-response section with essay prompts.</p>
+      <ul class="exam-features">
+        <li>2 required works (Lorca + García Márquez)</li>
+        <li>22 multiple choice + free response</li>
+        <li>60-minute timed exam</li>
+        <li>Answer key unlocks full course at LecturaIQ</li>
+      </ul>
+      <a href="https://lecturaiq.com/exam.html" class="btn">Start Free Exam</a>
+    </div>
+
+    <!-- Coming Soon: AP Calc AB -->
+    <div class="exam-card coming-soon">
+      <span class="exam-badge" style="background:#6b7280;">Coming Soon</span>
+      <h3>AP Calculus AB</h3>
+      <p>Comprehensive practice exam covering limits, derivatives, integrals, and the Fundamental Theorem of Calculus.</p>
+      <ul class="exam-features">
+        <li>Multiple choice + free response</li>
+        <li>Calculator & non-calculator sections</li>
+        <li>Step-by-step solutions</li>
+      </ul>
+      <button class="btn" disabled>Coming Soon</button>
+    </div>
+
+    <!-- Coming Soon: AP US History -->
+    <div class="exam-card coming-soon">
+      <span class="exam-badge" style="background:#6b7280;">Coming Soon</span>
+      <h3>AP US History</h3>
+      <p>Full-length practice exam with DBQ, LEQ, and multiple-choice sections covering all APUSH periods.</p>
+      <ul class="exam-features">
+        <li>55 multiple choice questions</li>
+        <li>Document-based question (DBQ)</li>
+        <li>Long essay question (LEQ)</li>
+      </ul>
+      <button class="btn" disabled>Coming Soon</button>
+    </div>
+
+    <!-- Coming Soon: AP Biology -->
+    <div class="exam-card coming-soon">
+      <span class="exam-badge" style="background:#6b7280;">Coming Soon</span>
+      <h3>AP Biology</h3>
+      <p>Practice exam covering all four Big Ideas: evolution, energy, information storage, and systems interactions.</p>
+      <ul class="exam-features">
+        <li>60 multiple choice questions</li>
+        <li>Free response questions</li>
+        <li>Lab-based scenarios</li>
+      </ul>
+      <button class="btn" disabled>Coming Soon</button>
+    </div>
+
+    <!-- Coming Soon: AP Chemistry -->
+    <div class="exam-card coming-soon">
+      <span class="exam-badge" style="background:#6b7280;">Coming Soon</span>
+      <h3>AP Chemistry</h3>
+      <p>Comprehensive exam covering atomic structure, bonding, kinetics, thermodynamics, and equilibrium.</p>
+      <ul class="exam-features">
+        <li>Multiple choice + free response</li>
+        <li>Calculator & non-calculator sections</li>
+        <li>Detailed solutions with equations</li>
+      </ul>
+      <button class="btn" disabled>Coming Soon</button>
+    </div>
+
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h2>📬 Vote for the Next Exam</h2>
+    <p>Which AP exam should we build next? Enter your email and tell us!</p>
+    <form id="vote-form" style="margin-top:1.5rem;">
+      <input type="email" id="email" placeholder="Your email address" required />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">We'll notify you when your requested exam is ready.</p>
+  </div>
+</div>
+
+<footer>
+  <p>Built with ❤️ for AP students. Not affiliated with the College Board.</p>
+  <p style="margin-top:0.5rem;">
+    <a href="https://lecturaiq.com">LecturaIQ</a> · 
+    <a href="mailto:hello@lecturaiq.com">Contact</a>
+  </p>
+</footer>
+
+<script>
+document.getElementById('vote-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  // TODO: Send to backend/Google Sheets/Mailchimp
+  alert('Thanks! We'll email you when we launch your requested exam.');
+  document.getElementById('email').value = '';
+});
+</script>
+</body>
+</html>
