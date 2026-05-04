@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP English Literature Practice Exam — ExamIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0d1b2a; --gold:#c9a84c; --cream:#f8f4ee; --text:#1a1a2e; --white:#ffffff; --green:#16a34a; --red:#dc2626; }
+    body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--text); }
+    nav { background:var(--navy); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.4rem; font-weight:700; text-decoration:none; }
+    .logo span { color:var(--white); }
+    .timer { color:var(--white); font-weight:600; font-size:1.1rem; }
+    .container { max-width:1200px; margin:0 auto; padding:2rem 1.5rem; }
+    .exam-header { text-align:center; margin-bottom:2rem; }
+    .exam-header h1 { font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--navy); margin-bottom:0.5rem; }
+    .exam-header p { color:#6b7280; }
+    .instructions { background:var(--white); border-left:4px solid var(--gold); padding:1.5rem; border-radius:8px; margin-bottom:2rem; }
+    .section { background:var(--white); border-radius:12px; padding:2rem; margin-bottom:2rem; border:1px solid #e5e7eb; }
+    .section-title { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--navy); margin-bottom:1rem; }
+    .passage { background:#f9fafb; padding:1.5rem; border-radius:8px; margin-bottom:2rem; line-height:1.8; font-size:0.95rem; }
+    .passage-title { font-weight:700; color:var(--navy); margin-bottom:1rem; }
+    .line-num { display:inline-block; width:30px; color:#9ca3af; font-size:0.85rem; }
+    .question { margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e5e7eb; }
+    .question:last-child { border-bottom:none; }
+    .question-text { font-weight:600; margin-bottom:1rem; color:var(--navy); }
+    .choices { display:flex; flex-direction:column; gap:0.75rem; }
+    .choice { padding:0.75rem 1rem; border:2px solid #e5e7eb; border-radius:8px; cursor:pointer; transition:all 0.2s; }
+    .choice:hover { border-color:var(--gold); background:#fefaf1; }
+    .choice.selected { border-color:var(--navy); background:rgba(13,27,42,0.05); font-weight:600; }
+    .choice.correct { border-color:var(--green); background:rgba(22,163,74,0.05); }
+    .choice.incorrect { border-color:var(--red); background:rgba(220,38,38,0.05); }
+    .explanation { background:#f0f9ff; border-left:3px solid #3b82f6; padding:1rem; margin-top:1rem; border-radius:6px; font-size:0.9rem; display:none; }
+    .explanation.show { display:block; }
+    .btn { background:var(--gold); color:var(--navy); padding:0.85rem 2rem; border-radius:8px; font-weight:700; font-size:1rem; border:none; cursor:pointer; transition:all 0.2s; text-decoration:none; display:inline-block; }
+    .btn:hover { background:#e2c278; }
+    .btn-secondary { background:var(--navy); color:var(--white); }
+    .btn-secondary:hover { background:#1a2f4a; }
+    .score-card { background:linear-gradient(135deg, var(--navy), #1a2f4a); color:var(--white); border-radius:12px; padding:2.5rem; text-align:center; margin-bottom:2rem; }
+    .score-big { font-family:'Playfair Display',serif; font-size:4rem; font-weight:700; color:var(--gold); margin:1rem 0; }
+    .unlock-cta { background:var(--white); border:2px solid var(--gold); border-radius:12px; padding:2rem; text-align:center; margin-top:2rem; }
+    .unlock-cta h3 { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--navy); margin-bottom:0.75rem; }
+    .unlock-cta .price { font-size:2.5rem; font-weight:700; color:var(--gold); margin:1rem 0; }
+    .hidden { display:none !important; }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6SHQTG1VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z6SHQTG1VJ');
+  </script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Exam<span>IQ</span></a>
+  <div class="timer" id="timer">60:00</div>
+</nav>
+
+<div class="container">
+  <div class="exam-header">
+    <h1>AP English Literature & Composition</h1>
+    <p>Practice Exam — Section I: Multiple Choice</p>
+  </div>
+
+  <div class="instructions">
+    <strong>Instructions:</strong> This section contains 26 multiple-choice questions based on two literary passages. Read each passage carefully, then choose the best answer for each question. You have 60 minutes to complete this section. Click "Submit Exam" when finished to see your score.
+  </div>
+
+  <div id="exam-content">
+    <!-- PASSAGE 1: DONNE POEM -->
+    <div class="section">
+      <div class="section-title">Passage 1 — Poetry (Questions 1-13)</div>
+      <div class="passage">
+        <div class="passage-title">Read the following poem carefully before choosing your answers.</div>
+        <div><span class="line-num">1</span> Death, be not proud, though some have called thee</div>
+        <div><span class="line-num">2</span> Mighty and dreadful, for thou art not so;</div>
+        <div><span class="line-num">3</span> For those whom thou think'st thou dost overthrow</div>
+        <div><span class="line-num">4</span> Die not, poor Death, nor yet canst thou kill me.</div>
+        <div><span class="line-num">5</span> From rest and sleep, which but thy pictures be,</div>
+        <div><span class="line-num">6</span> Much pleasure; then from thee much more must flow,</div>
+        <div><span class="line-num">7</span> And soonest our best men with thee do go,</div>
+        <div><span class="line-num">8</span> Rest of their bones, and soul's delivery.</div>
+        <div><span class="line-num">9</span> Thou art slave to fate, chance, kings, and desperate men,</div>
+        <div><span class="line-num">10</span> And dost with poison, war, and sickness dwell,</div>
+        <div><span class="line-num">11</span> And poppy or charms can make us sleep as well</div>
+        <div><span class="line-num">12</span> And better than thy stroke; why swell'st thou then?</div>
+        <div><span class="line-num">13</span> One short sleep past, we wake eternally</div>
+        <div><span class="line-num">14</span> And death shall be no more; Death, thou shalt die.</div>
+        <div style="margin-top:1rem; font-style:italic; color:#6b7280;">John Donne, "Death, Be Not Proud" (Holy Sonnet 10), c. 1609</div>
+      </div>
+
+      <!-- Questions 1-13 will be inserted here by JavaScript -->
+      <div id="questions-passage1"></div>
+    </div>
+
+    <!-- PASSAGE 2: AUSTEN PROSE -->
+    <div class="section">
+      <div class="section-title">Passage 2 — Prose Fiction (Questions 14-26)</div>
+      <div class="passage">
+        <div class="passage-title">Read the following passage carefully before choosing your answers.</div>
+        <p style="margin-bottom:1rem;">It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.</p>
+        <p style="margin-bottom:1rem;">"My dear Mr. Bennet," said his lady to him one day, "have you heard that Netherfield Park is let at last?"<br>Mr. Bennet replied that he had not.<br>"But it is," returned she; "for Mrs. Long has just been here, and she told me all about it."<br>Mr. Bennet made no answer.<br>"Do you not want to know who has taken it?" cried his wife impatiently.<br>"You want to tell me, and I have no objection to hearing it." This was invitation enough.</p>
+        <p style="margin-bottom:1rem;">"Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it, that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week."</p>
+        <p style="margin-bottom:1rem;">"What is his name?"<br>"Bingley."<br>"Is he married or single?"<br>"Oh! Single, my dear, to be sure! A single man of large fortune; four or five thousand a year. What a fine thing for our girls!"<br>"How so? Can it affect them?"<br>"My dear Mr. Bennet," replied his wife, "how can you be so tiresome! You must know that I am thinking of his marrying one of them."</p>
+        <p style="margin-bottom:1rem;">"Is that his design in settling here?"<br>"Design! Nonsense, how can you talk so! But it is very likely that he may fall in love with one of them, and therefore you must visit him as soon as he comes."</p>
+        <p style="margin-bottom:1rem;">"I see no occasion for that. You and the girls may go, or you may send them by themselves, which perhaps will be still better, for as you are as handsome as any of them, Mr. Bingley might like you the best of the party."</p>
+        <p style="margin-bottom:1rem;">"My dear, you flatter me. I certainly have had my share of beauty, but I do not pretend to be anything extraordinary now. When a woman has five grown-up daughters, she ought to give over thinking of her own beauty."<br>"In such cases, a woman has not often much beauty to think of."<br>"But, my dear, you must indeed go and see Mr. Bingley when he comes into the neighbourhood."</p>
+        <p style="margin-bottom:1rem;">"It is more than I engage for, I assure you."<br>"But consider your daughters. Only think what an establishment it would be for one of them. Sir William and Lady Lucas are determined to go, merely on that account, for in general, you know, they visit no newcomers. Indeed you must go, for it will be impossible for us to visit him if you do not."</p>
+        <p style="margin-bottom:1rem;">"You are over-scrupulous, surely. I dare say Mr. Bingley will be very glad to see you; and I will send a few lines by you to assure him of my hearty consent to his marrying whichever he chooses of our girls; though I must throw in a good word for my little Lizzy."</p>
+        <p style="margin-bottom:1rem;">"I desire you will do no such thing. Lizzy is not a bit better than the others; and I am sure she is not half so handsome as Jane, nor half so good-humoured as Lydia. But you are always giving her the preference."<br>"They have none of them much to recommend them," replied he; "they are all silly and ignorant like other girls; but Lizzy has something more of quickness than her sisters."</p>
+        <p style="margin-bottom:1rem;">"Mr. Bennet, how can you abuse your own children so? You take delight in vexing me. You have no compassion for my poor nerves."<br>"You mistake me, my dear. I have a high respect for your nerves. They are my old friends. I have heard you mention them with consideration these last twenty years at least."</p>
+        <div style="margin-top:1rem; font-style:italic; color:#6b7280;">Jane Austen, Pride and Prejudice (1813), Chapter 1</div>
+      </div>
+
+      <!-- Questions 14-26 will be inserted here by JavaScript -->
+      <div id="questions-passage2"></div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="btn" id="submit-btn" onclick="submitExam()">Submit Exam</button>
+    </div>
+  </div>
+
+  <!-- SCORE CARD (hidden until submit) -->
+  <div id="score-section" class="hidden">
+    <div class="score-card">
+      <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:1rem;">Your Score</h2>
+      <div class="score-big" id="score-display">--/26</div>
+      <p id="score-percentage" style="font-size:1.2rem; opacity:0.9;">--</p>
+      <p id="score-message" style="margin-top:1rem; font-size:1rem; opacity:0.8;"></p>
+    </div>
+
+    <div class="unlock-cta">
+      <h3>🔓 Want Detailed Answers & Explanations?</h3>
+      <p style="color:#6b7280; margin:0.75rem 0;">See correct answers, detailed explanations for every question, and a full breakdown of your performance.</p>
+      <div class="price">$6.99</div>
+      <button class="btn" onclick="unlockAnswers()">Unlock Answer Key</button>
+      <p style="font-size:0.85rem; color:#9ca3af; margin-top:1rem;">One-time payment • Instant access</p>
+    </div>
+  </div>
+</div>
+
+<script src="/exam-data-english-lit.js"></script>
+<script>
+// Timer
+let timeLeft = 60 * 60; // 60 minutes in seconds
+const timerEl = document.getElementById('timer');
+
+function updateTimer() {
+  const mins = Math.floor(timeLeft / 60);
+  const secs = timeLeft % 60;
+  timerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+  if (timeLeft > 0) {
+    timeLeft--;
+  } else {
+    submitExam();
+  }
+}
+
+setInterval(updateTimer, 1000);
+
+// Render questions
+function renderQuestions() {
+  const p1Container = document.getElementById('questions-passage1');
+  const p2Container = document.getElementById('questions-passage2');
+  
+  examData.passage1.forEach((q, idx) => {
+    const qNum = idx + 1;
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <div class="question-text">${qNum}. ${q.question}</div>
+      <div class="choices" data-question="${qNum}">
+        ${q.choices.map((choice, i) => `
+          <div class="choice" data-answer="${String.fromCharCode(65+i)}" onclick="selectAnswer(${qNum}, '${String.fromCharCode(65+i)}')">
+            (${String.fromCharCode(65+i)}) ${choice}
+          </div>
+        `).join('')}
+      </div>
+      <div class="explanation" id="exp-${qNum}">
+        <strong>Correct Answer: ${q.correct}</strong><br>
+        ${q.explanation}
+      </div>
+    `;
+    p1Container.appendChild(div);
+  });
+  
+  examData.passage2.forEach((q, idx) => {
+    const qNum = idx + 14;
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <div class="question-text">${qNum}. ${q.question}</div>
+      <div class="choices" data-question="${qNum}">
+        ${q.choices.map((choice, i) => `
+          <div class="choice" data-answer="${String.fromCharCode(65+i)}" onclick="selectAnswer(${qNum}, '${String.fromCharCode(65+i)}')">
+            (${String.fromCharCode(65+i)}) ${choice}
+          </div>
+        `).join('')}
+      </div>
+      <div class="explanation" id="exp-${qNum}">
+        <strong>Correct Answer: ${q.correct}</strong><br>
+        ${q.explanation}
+      </div>
+    `;
+    p2Container.appendChild(div);
+  });
+}
+
+const userAnswers = {};
+
+function selectAnswer(qNum, answer) {
+  userAnswers[qNum] = answer;
+  const choices = document.querySelector(`[data-question="${qNum}"]`).querySelectorAll('.choice');
+  choices.forEach(c => c.classList.remove('selected'));
+  event.target.classList.add('selected');
+}
+
+function submitExam() {
+  let correct = 0;
+  const total = 26;
+  
+  [...examData.passage1, ...examData.passage2].forEach((q, idx) => {
+    const qNum = idx < 13 ? idx + 1 : idx + 1;
+    if (userAnswers[qNum] === q.correct) correct++;
+  });
+  
+  const percentage = Math.round((correct / total) * 100);
+  
+  document.getElementById('exam-content').classList.add('hidden');
+  document.getElementById('score-section').classList.remove('hidden');
+  document.getElementById('score-display').textContent = `${correct}/${total}`;
+  document.getElementById('score-percentage').textContent = `${percentage}% correct`;
+  
+  let message = '';
+  if (percentage >= 85) message = '🎉 Excellent work! You're on track for a 5.';
+  else if (percentage >= 70) message = '👏 Strong performance! Keep practicing for a 4-5.';
+  else if (percentage >= 55) message = '👍 Good start! Focus on weak areas to reach 4+.';
+  else message = '📚 Keep studying! Review the answer key to improve.';
+  
+  document.getElementById('score-message').textContent = message;
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function unlockAnswers() {
+  // TODO: Integrate Stripe payment link for $6.99
+  // For now, just unlock (you'll replace this with real payment flow)
+  alert('Payment integration coming soon! For now, answers are unlocked for testing.');
+  
+  // Show all explanations
+  document.querySelectorAll('.explanation').forEach(exp => exp.classList.add('show'));
+  
+  // Highlight correct/incorrect answers
+  [...examData.passage1, ...examData.passage2].forEach((q, idx) => {
+    const qNum = idx < 13 ? idx + 1 : idx + 1;
+    const choices = document.querySelector(`[data-question="${qNum}"]`).querySelectorAll('.choice');
+    choices.forEach(c => {
+      const ans = c.getAttribute('data-answer');
+      if (ans === q.correct) c.classList.add('correct');
+      else if (ans === userAnswers[qNum]) c.classList.add('incorrect');
+    });
+  });
+  
+  // Hide unlock CTA
+  document.querySelector('.unlock-cta').classList.add('hidden');
+}
+
+// Initialize
+renderQuestions();
+</script>
+</body>
+</html>
