@@ -248,17 +248,12 @@ function submitExam() {
 }
 
 function unlockAnswers() {
-  // TODO: Integrate Stripe payment link for $6.99
-  // For now, just unlock (you'll replace this with real payment flow)
-  alert('Payment integration coming soon! For now, answers are unlocked for testing.');
-  
-  // Show all explanations
-  document.querySelectorAll('.explanation').forEach(exp => exp.classList.add('show'));
-  
-  // Highlight correct/incorrect answers
-  [...examData.passage1, ...examData.passage2].forEach((q, idx) => {
-    const qNum = idx < 13 ? idx + 1 : idx + 1;
-    const choices = document.querySelector(`[data-question="${qNum}"]`).querySelectorAll('.choice');
+  // Store user answers before redirect
+  sessionStorage.setItem('examAnswers', JSON.stringify(userAnswers));
+  sessionStorage.setItem('examCompleted', 'true');
+  // Redirect to Stripe payment - will return to ?session_id=xxx on success
+  window.location.href = 'https://buy.stripe.com/aFafZh3WxeFY2jx2b7abK03?client_reference_id=english-lit';
+}"]`).querySelectorAll('.choice');
     choices.forEach(c => {
       const ans = c.getAttribute('data-answer');
       if (ans === q.correct) c.classList.add('correct');
@@ -268,6 +263,42 @@ function unlockAnswers() {
   
   // Hide unlock CTA
   document.querySelector('.unlock-cta').classList.add('hidden');
+}
+
+
+// Check if returning from Stripe payment
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('session_id') || sessionStorage.getItem('examCompleted') === 'true') {
+  // Payment successful - unlock answers
+  setTimeout(() => {
+    document.getElementById('exam-content').classList.add('hidden');
+    document.getElementById('score-section').classList.remove('hidden');
+    
+    // Restore answers if available
+    const savedAnswers = sessionStorage.getItem('examAnswers');
+    if (savedAnswers) {
+      Object.assign(userAnswers, JSON.parse(savedAnswers));
+    }
+    
+    // Auto-unlock answers
+    document.querySelectorAll('.explanation').forEach(exp => exp.classList.add('show'));
+    
+    [...examData.passage1, ...examData.passage2].forEach((q, idx) => {
+      const qNum = idx < 13 ? idx + 1 : idx + 1;
+      const choices = document.querySelector(`[data-question="${qNum}"]`)?.querySelectorAll('.choice');
+      if (choices) {
+        choices.forEach(c => {
+          const ans = c.getAttribute('data-answer');
+          if (ans === q.correct) c.classList.add('correct');
+          else if (ans === userAnswers[qNum]) c.classList.add('incorrect');
+        });
+      }
+    });
+    
+    document.querySelector('.unlock-cta')?.classList.add('hidden');
+    sessionStorage.removeItem('examCompleted');
+    sessionStorage.removeItem('examAnswers');
+  }, 500);
 }
 
 // Initialize
